@@ -1,0 +1,2 @@
+rootProject.name='UPS Assessment'
+include ':app'
