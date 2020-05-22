@@ -11,11 +11,12 @@ import com.app.di.Injectable
 import com.app.di.injectViewModel
 import com.app.extensions.hide
 import com.app.extensions.show
+import com.app.ui.homepage.adapter.TimesAdapter
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_homepage.*
 import javax.inject.Inject
 
-class HomepageFragment : Fragment(R.layout.fragment_homepage), Injectable{
+class HomepageFragment : Fragment(R.layout.fragment_homepage), Injectable {
 
     companion object {
         fun newInstance() =
@@ -39,6 +40,10 @@ class HomepageFragment : Fragment(R.layout.fragment_homepage), Injectable{
 
                 RetrofitResult.Status.SUCCESS -> {
                     progressBar.hide()
+                    it.data?.let { response ->
+                        val adapter = TimesAdapter(response.results)
+                        rvTimes.adapter = adapter
+                    }
                 }
 
                 RetrofitResult.Status.ERROR -> {

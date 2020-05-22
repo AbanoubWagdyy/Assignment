@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.app.R
-import com.app.data.model.Result
 import com.app.extensions.inflate
+import com.app.data.model.Result
 
 class TimesAdapter(private var timeList: List<Result>) :
     RecyclerView.Adapter<TimesAdapter.MyViewHolder>() {
@@ -18,7 +18,8 @@ class TimesAdapter(private var timeList: List<Result>) :
     override fun getItemCount(): Int = timeList.size
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val result = timeList[position]
+        holder.bindTimesData(result)
     }
 
 
@@ -28,13 +29,23 @@ class TimesAdapter(private var timeList: List<Result>) :
 
         private var view: View = v
         private var title: TextView
+        private var author: TextView
+        private var description: TextView
+        private var date: TextView
 
         init {
             title = view.findViewById(R.id.title)
+            author = view.findViewById(R.id.author)
+            description = view.findViewById(R.id.description)
+            date = view.findViewById(R.id.date)
         }
 
         fun bindTimesData(result: Result) {
 
+            title.text = result.title
+            author.text = result.byline
+            description.text = result.abstract
+            date.text = result.updated
         }
     }
 }

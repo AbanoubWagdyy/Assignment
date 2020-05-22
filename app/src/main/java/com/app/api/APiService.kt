@@ -8,5 +8,5 @@ import retrofit2.http.*
 interface APiService {
 
     @GET("7.json")
-    fun getTimes(@Query("api-key") api_key: String): Response<TimesResponse>
+    suspend fun getTimes(@Query("api-key") api_key: String): Response<TimesResponse>
 }

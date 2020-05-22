@@ -26,7 +26,6 @@ class AppModule {
     fun provideRemoteDataSource(service: APiService) =
         RemoteDataSource(service)
 
-
     private fun createRetrofit(
         okhttpClient: OkHttpClient,
         converterFactory: GsonConverterFactory
